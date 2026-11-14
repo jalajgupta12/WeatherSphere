@@ -96,7 +96,7 @@ export default function Home() {
   const hourly = forecast?.hourly;
   const condition = current ? describeWeather(current.weather_code) : "Loading conditions";
   const aqiValue = air?.current?.us_aqi ?? null;
-  const aqi = AQIInfo(aqiValue);
+  const aqi = AQIInfo({ aqi: aqiValue });
   const hourRows = useMemo(() => {
     if (!hourly || !forecast) return [];
     const start = Math.max(0, hourly.time.findIndex(t => t >= forecast.current.time));
